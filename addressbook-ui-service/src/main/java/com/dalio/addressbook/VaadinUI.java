@@ -21,6 +21,7 @@ public class VaadinUI extends UI {
 
 	private static final long serialVersionUID = -1260929657627443209L;
 
+	private CustomersClient repo;
 
 	private final CustomerEditor editor;
 

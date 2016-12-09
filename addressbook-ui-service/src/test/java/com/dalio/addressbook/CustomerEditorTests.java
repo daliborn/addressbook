@@ -1,5 +1,8 @@
 package com.dalio.addressbook;
 
+import static org.mockito.BDDMockito.then;
+import static org.mockito.Matchers.argThat;
+
 import org.hamcrest.Description;
 import org.hamcrest.TypeSafeMatcher;
 import org.junit.Test;
@@ -7,13 +10,6 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
-
-import com.dalio.addressbook.Customer;
-import com.dalio.addressbook.CustomerEditor;
-import com.dalio.addressbook.CustomerRepository;
-
-import static org.mockito.BDDMockito.then;
-import static org.mockito.Matchers.argThat;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CustomerEditorTests {
@@ -24,7 +20,7 @@ public class CustomerEditorTests {
     private static final String EMAIL = "daliborn@gmail.com";
     
 
-    @Mock CustomerRepository customerRepository;
+    @Mock CustomersClient customerRepository;
     @InjectMocks CustomerEditor editor;
 
     @Test

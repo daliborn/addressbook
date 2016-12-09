@@ -1,15 +1,12 @@
 package com.dalio.addressbook;
 
+import static org.assertj.core.api.BDDAssertions.then;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import com.dalio.addressbook.Application;
-import com.dalio.addressbook.CustomerRepository;
-
-import static org.assertj.core.api.BDDAssertions.then;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class,
@@ -17,7 +14,7 @@ import static org.assertj.core.api.BDDAssertions.then;
 public class ApplicationTests {
 
     @Autowired
-    private CustomerRepository repository;
+    private CustomersClient repository;
 
     @Test
     public void shouldFillOutComponentsWithDataWhenTheApplicationIsStarted() {

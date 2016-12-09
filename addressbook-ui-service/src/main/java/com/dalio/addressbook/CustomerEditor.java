@@ -25,7 +25,7 @@ import com.vaadin.ui.themes.ValoTheme;
 @SpringComponent
 @UIScope
 public class CustomerEditor extends VerticalLayout {
-
+	private CustomersClient repository;
 
 	/**
 	 * The currently edited customer

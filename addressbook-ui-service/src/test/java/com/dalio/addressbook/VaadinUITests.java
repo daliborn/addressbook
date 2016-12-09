@@ -1,5 +1,7 @@
 package com.dalio.addressbook;
 
+import static org.assertj.core.api.BDDAssertions.then;
+
 import javax.annotation.PostConstruct;
 
 import org.junit.Before;
@@ -12,29 +14,23 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.dalio.addressbook.Customer;
-import com.dalio.addressbook.CustomerEditor;
-import com.dalio.addressbook.CustomerRepository;
-import com.dalio.addressbook.VaadinUI;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.spring.boot.VaadinAutoConfiguration;
-
-import static org.assertj.core.api.BDDAssertions.then;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = VaadinUITests.Config.class,
         webEnvironment = SpringBootTest.WebEnvironment.NONE)
 public class VaadinUITests {
 
-    @Autowired CustomerRepository repository;
+    @Autowired CustomersClient repository;
     VaadinRequest vaadinRequest = Mockito.mock(VaadinRequest.class);
     CustomerEditor editor;
     VaadinUI vaadinUI;
 
     @Before
     public void setup() {
-        this.editor = new CustomerEditor(this.repository);
-        this.vaadinUI = new VaadinUI(this.repository, editor);
+        this.editor = new CustomerEditor();
+        this.vaadinUI = new VaadinUI(editor);
     }
 
     @Test
@@ -101,7 +97,7 @@ public class VaadinUITests {
     @EnableAutoConfiguration(exclude = VaadinAutoConfiguration.class)
     static class Config {
 
-        @Autowired CustomerRepository repository;
+        @Autowired CustomersClient repository;
 
         @PostConstruct
         public void initializeData() {
